@@ -1,0 +1,268 @@
+$bg-color: #00468c;
+$white: #fff;
+$border-color: #d6dee5;
+$scaler-logo-bg: #e6f2ff;
+$label-color: #61738e;
+$input-active-color: #0080ff;
+$font-color: #515151;
+$err-color: #e22d4c;
+$success-color: #00ff77;
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin custom-input {
+  height: 4rem;
+  font-size: large;
+  border-radius: 0.3rem;
+  border: 0.1rem solid $border-color;
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+@mixin transition($property, $time, $timingFunction) {
+  -webkit-transition: $property $time $timingFunction;
+  -moz-transition: $property $time $timingFunction;
+  -ms-transition: $property $time $timingFunction;
+  -o-transition: $property $time $timingFunction;
+  transition: $property $time $timingFunction;
+}
+
+@mixin input-box {
+  padding: 1rem 0;
+  @include flex-row();
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 2.5rem;
+    left: 0.8rem;
+    color: $label-color;
+    background-color: $white;
+    font-size: 1rem;
+    @include transition(all, 0.2s, ease-in-out);
+  }
+
+  input {
+    width: 100%;
+    @include custom-input();
+    outline: 0px;
+  }
+
+  span {
+    display: none;
+    position: absolute;
+    color: $err-color;
+    font-size: 0.6rem;
+    top: 5.1rem;
+    left: 0.8rem;
+  }
+}
+
+body {
+  background-color: $bg-color;
+  margin: 0;
+  font-family: sans-serif;
+  color: $font-color;
+}
+
+.signup {
+  @include flex-row();
+  height: 100vh;
+
+  &__avatar-container {
+    flex: 55%;
+    @include flex-row();
+    @include flex-centered();
+
+    img {
+      width: 90%;
+      height: auto;
+    }
+  }
+}
+
+.form-container {
+  flex: 45%;
+  background-color: $white;
+  @include flex-col();
+  padding: 1rem 4rem;
+
+  &__header-logos {
+    @include flex-row();
+    justify-content: space-between;
+    margin: 0 0 2rem 0;
+
+    span {
+      background-color: $scaler-logo-bg;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      img {
+        height: 0.9rem;
+        margin: 0 0 0 0.5rem;
+      }
+    }
+  }
+
+  &__header-title {
+    margin: 0;
+  }
+
+  &__header-subtitle {
+    margin: 0.5rem 0;
+  }
+}
+
+.signup-form {
+  padding: 0.5rem 0;
+
+  &__username {
+    @include input-box();
+  }
+
+  &__email {
+    @include input-box();
+  }
+
+  &__phone-grp {
+    @include flex-row();
+    justify-content: space-between;
+
+    [data-codes="country"] {
+      @include flex-col();
+      display: none;
+      align-items: center;
+      position: absolute;
+      top: 5rem;
+      max-height: 15rem;
+      overflow-y: scroll;
+      z-index: 2;
+      border: 0.1rem solid $border-color;
+      background-color: $white;
+
+      span {
+        display: inline;
+        position: static;
+        color: $font-color;
+        font-size: 1rem;
+        background-color: $white;
+        padding: 1rem;
+
+        &:hover {
+          background-color: $input-active-color;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__phone {
+    @include input-box();
+    width: 80%;
+  }
+
+  &__country-code {
+    @include input-box();
+    width: 15%;
+
+    span[data-caret="phone"] {
+      display: inline;
+      color: $font-color;
+      font-size: 0.8rem;
+      left: 75%;
+      top: 2.5rem;
+    }
+  }
+
+  &__password {
+    @include input-box();
+  }
+
+  &__profession {
+    position: relative;
+    margin: 1rem 0;
+    @include flex-row();
+    justify-content: space-between;
+    cursor: pointer;
+
+    span {
+      @include flex-row();
+      @include custom-input();
+      align-items: center;
+      justify-content: space-around;
+      width: 47.5%;
+    }
+
+    span[data-err="profession"] {
+      position: absolute;
+      display: none;
+      border: none;
+      font-size: 0.6rem;
+      top: 3.3rem;
+      color: $err-color;
+    }
+  }
+
+  &__submit {
+    padding: 1rem 0;
+    button {
+      height: 3rem;
+      width: 6rem;
+      background-color: $bg-color;
+      color: $white;
+      font-size: large;
+      border: 0.08rem solid $border-color;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+  }
+
+  &__submitted {
+    position: absolute;
+    padding: 1rem 2rem 0.8rem 2rem;
+    background-color: $success-color;
+    top: 2rem;
+    left: 15%;
+    border-radius: 0.5rem;
+    opacity: 0;
+    @include transition(opacity, 1s, linear);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .signup {
+    @include flex-row();
+    height: 100vh;
+
+    &__avatar-container {
+      flex: 0;
+    }
+  }
+
+  .form-container {
+    flex: 100%;
+    padding: 1rem 2rem;
+  }
+
+  .signup-form {
+    &__country-code {
+      width: 25%;
+    }
+
+    &__phone {
+      width: 70%;
+    }
+  }
+}

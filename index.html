@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="signup">
+      <div class="signup__form-container form-container">
+        <div class="form-container__header-logos">
+          <img
+            src="https://assets.interviewbit.com/assets/ibpp/moco-images/brand-bcc717b4058fed9412d98ef3bcd39d8f240669d8d79ddc3d331d26fb6529413c.svg.gz"
+          />
+          <span>
+            Powered by
+            <img
+              src="https://assets.interviewbit.com/assets/ibpp/moco-images/scaler-logo-40ee66d1a8bae334500f41e98b8c773993e98c129873fac82d271135bb9b51eb.svg.gz"
+            />
+          </span>
+        </div>
+
+        <h2 class="form-container__header-title">
+          Free Mock SDE Interview Assessment
+        </h2>
+
+        <p class="form-container__header-subtitle">
+          Help us know you better for the best experience
+        </p>
+
+        <form action="#" class="form-container__form signup-form">
+          <div class="signup-form__username" data-class="username">
+            <label>Username</label>
+            <input type="text" />
+            <span data-err="username">Please enter an username</span>
+          </div>
+
+          <div class="signup-form__email" data-class="email">
+            <label>E-Mail ID</label>
+            <input type="email" />
+            <span data-err="email">Please enter a valid E-Mail ID</span>
+          </div>
+
+          <div class="signup-form__phone-grp">
+            <div class="signup-form__country-code" data-class="country-code">
+              <label></label>
+              <input type="text" class="phone__country-code" value="+91" />
+              <div data-codes="country"></div>
+              <span data-caret="phone">&#9660;</span>
+            </div>
+
+            <div class="signup-form__phone" data-class="phone">
+              <label>Phone Number</label>
+              <input type="text" class="phone__number" />
+              <span data-err="phone">Please a valid phone number</span>
+            </div>
+          </div>
+
+          <div class="signup-form__password" data-class="password">
+            <label>Password</label>
+            <input type="password" />
+            <span data-err="password"
+              >Please enter a password of minimum length 8 containing a Small
+              case letter, a Capital case letter and a number. Other valid
+              characters are !@#$%^&*
+            </span>
+          </div>
+
+          <div class="signup-form__profession">
+            <span data-class="profession-student">
+              <img
+                src="https://assets.interviewbit.com/packs/images/Student.9dc3f6.svg"
+              />
+              Student
+            </span>
+            <span data-class="profession-professional">
+              <img
+                src="https://assets.interviewbit.com/packs/images/Professionals.c668e0.svg"
+              />
+              Professional
+            </span>
+            <span data-err="profession">Choose a profession</span>
+          </div>
+
+          <div class="signup-form__submit">
+            <button type="submit" data-btn="submit">Submit</button>
+          </div>
+
+          <span class="signup-form__submitted" data-alert="submit">
+            Form Submitted Successfully
+          </span>
+        </form>
+      </div>
+      <div class="signup__avatar-container">
+        <img
+          data-img="avatar-img"
+          src="https://assets.interviewbit.com/assets/ibpp/moco_event/professional/moco-f1-common-08f74b39620f4465001c38619a77bb0540f6abfc466cf283d8f056546c14537b.png"
+          data-student="https://assets.interviewbit.com/assets/ibpp/moco_event/student/moco-f1-student-abcd199fbac6dcee9564dd3c34e39000bf0687bcc6f06ab764a38aea31e118f9.png"
+          data-professional="https://assets.interviewbit.com/assets/ibpp/moco_event/professional/moco-f1-professionaChoosel-0ca5ded8f6ba9db16c5d052ae08d761fe60e956985123a35373489f7656c5a0e.png"
+        />
+      </div>
+    </div>
+    <script src="statics.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
