@@ -254,6 +254,12 @@ body {
   .form-container {
     flex: 100%;
     padding: 1rem 2rem;
+
+    &__header-logos {
+      span {
+        display: none;
+      }
+    }
   }
 
   .signup-form {

@@ -324,6 +324,9 @@ body {
     flex: 100%;
     padding: 1rem 2rem;
   }
+  .form-container__header-logos span {
+    display: none;
+  }
   .signup-form__country-code {
     width: 25%;
   }
