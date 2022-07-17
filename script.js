@@ -146,7 +146,8 @@ submitButton.addEventListener("click", (event) => {
 let phones = Object.values(phoneCodes);
 
 let searchField = document.querySelector("[data-class='country-code']"),
-  dropdown = document.querySelector('[data-codes="country"]');
+  dropdown = document.querySelector('[data-codes="country"]'),
+  dropdownCaret = document.querySelector('span[data-caret="phone"]');
 
 const search = (event) => {
   const filteredPhones = phones.filter((phone) =>
@@ -160,7 +161,6 @@ const search = (event) => {
   let codes = dropdown.querySelectorAll("span");
   for (let i = 0; i < codes.length; i++)
     codes[i].addEventListener("click", setCountryCode);
-  console.log(codes);
 
   dropdown.style.display = "flex";
 };
@@ -172,6 +172,13 @@ searchField.addEventListener("focusout", (event) => {
     searchField.querySelector("input").value = "+91";
   } else dropdown.style.display = "none";
   searchField.querySelector("input").style.borderColor = borderColor;
+});
+
+searchField.querySelector("input").addEventListener("focus", (event) => {
+  if (event.target.value === "+91") {
+    event.target.value = "+";
+    search(event);
+  }
 });
 
 const setCountryCode = (event) => {
