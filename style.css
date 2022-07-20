@@ -11,11 +11,11 @@ body {
   height: 100vh;
 }
 .signup__avatar-container {
-  flex: 55%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex: 55%;
 }
 .signup__avatar-container img {
   width: 90%;
@@ -23,10 +23,10 @@ body {
 }
 
 .form-container {
-  flex: 45%;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
+  flex: 45%;
+  background-color: #fff;
   padding: 1rem 4rem;
 }
 .form-container__header-logos {
@@ -55,29 +55,29 @@ body {
   padding: 0.5rem 0;
 }
 .signup-form__username {
-  padding: 1rem 0;
   display: flex;
   flex-direction: row;
+  padding: 1rem 0;
   position: relative;
 }
 .signup-form__username label {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 2.5rem;
   left: 0.8rem;
   color: #61738e;
   background-color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 .signup-form__username input {
-  width: 100%;
   height: 4rem;
   font-size: large;
   border-radius: 0.3rem;
   border: 0.1rem solid #d6dee5;
   padding: 0.8rem;
   box-sizing: border-box;
-  outline: 0px;
+  width: 100%;
+  outline: 0;
 }
 .signup-form__username span {
   display: none;
@@ -87,30 +87,48 @@ body {
   top: 5.1rem;
   left: 0.8rem;
 }
+.signup-form__username[data-status=err] input {
+  border-color: #e22d4c;
+}
+.signup-form__username[data-status=err] label {
+  color: #e22d4c;
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__username[data-status=err] [data-err] {
+  display: inline;
+}
+.signup-form__username[data-status=active] input {
+  border-color: #0080ff;
+}
+.signup-form__username[data-status=active] label {
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
 .signup-form__email {
-  padding: 1rem 0;
   display: flex;
   flex-direction: row;
+  padding: 1rem 0;
   position: relative;
 }
 .signup-form__email label {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 2.5rem;
   left: 0.8rem;
   color: #61738e;
   background-color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 .signup-form__email input {
-  width: 100%;
   height: 4rem;
   font-size: large;
   border-radius: 0.3rem;
   border: 0.1rem solid #d6dee5;
   padding: 0.8rem;
   box-sizing: border-box;
-  outline: 0px;
+  width: 100%;
+  outline: 0;
 }
 .signup-form__email span {
   display: none;
@@ -119,6 +137,24 @@ body {
   font-size: 0.6rem;
   top: 5.1rem;
   left: 0.8rem;
+}
+.signup-form__email[data-status=err] input {
+  border-color: #e22d4c;
+}
+.signup-form__email[data-status=err] label {
+  color: #e22d4c;
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__email[data-status=err] [data-err] {
+  display: inline;
+}
+.signup-form__email[data-status=active] input {
+  border-color: #0080ff;
+}
+.signup-form__email[data-status=active] label {
+  top: 0.6rem;
+  font-size: 0.8rem;
 }
 .signup-form__phone-grp {
   display: flex;
@@ -151,30 +187,30 @@ body {
   color: #fff;
 }
 .signup-form__phone {
-  padding: 1rem 0;
   display: flex;
   flex-direction: row;
+  padding: 1rem 0;
   position: relative;
-  width: 80%;
+  width: 75%;
 }
 .signup-form__phone label {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 2.5rem;
   left: 0.8rem;
   color: #61738e;
   background-color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 .signup-form__phone input {
-  width: 100%;
   height: 4rem;
   font-size: large;
   border-radius: 0.3rem;
   border: 0.1rem solid #d6dee5;
   padding: 0.8rem;
   box-sizing: border-box;
-  outline: 0px;
+  width: 100%;
+  outline: 0;
 }
 .signup-form__phone span {
   display: none;
@@ -184,31 +220,49 @@ body {
   top: 5.1rem;
   left: 0.8rem;
 }
+.signup-form__phone[data-status=err] input {
+  border-color: #e22d4c;
+}
+.signup-form__phone[data-status=err] label {
+  color: #e22d4c;
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__phone[data-status=err] [data-err] {
+  display: inline;
+}
+.signup-form__phone[data-status=active] input {
+  border-color: #0080ff;
+}
+.signup-form__phone[data-status=active] label {
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
 .signup-form__country-code {
-  padding: 1rem 0;
   display: flex;
   flex-direction: row;
+  padding: 1rem 0;
   position: relative;
-  width: 15%;
+  width: 20%;
 }
 .signup-form__country-code label {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 2.5rem;
   left: 0.8rem;
   color: #61738e;
   background-color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 .signup-form__country-code input {
-  width: 100%;
   height: 4rem;
   font-size: large;
   border-radius: 0.3rem;
   border: 0.1rem solid #d6dee5;
   padding: 0.8rem;
   box-sizing: border-box;
-  outline: 0px;
+  width: 100%;
+  outline: 0;
 }
 .signup-form__country-code span {
   display: none;
@@ -218,37 +272,57 @@ body {
   top: 5.1rem;
   left: 0.8rem;
 }
-.signup-form__country-code span[data-caret=phone] {
+.signup-form__country-code[data-status=err] input {
+  border-color: #e22d4c;
+}
+.signup-form__country-code[data-status=err] label {
+  color: #e22d4c;
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__country-code[data-status=err] [data-err] {
+  display: inline;
+}
+.signup-form__country-code[data-status=active] input {
+  border-color: #0080ff;
+}
+.signup-form__country-code[data-status=active] label {
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__phone-grp span[data-caret=phone] {
+  position: absolute;
   display: inline;
   color: #515151;
   font-size: 0.8rem;
-  left: 75%;
-  top: 2.5rem;
+  margin-left: 6%;
+  margin-top: 2.5rem;
+  cursor: pointer;
 }
 .signup-form__password {
-  padding: 1rem 0;
   display: flex;
   flex-direction: row;
+  padding: 1rem 0;
   position: relative;
 }
 .signup-form__password label {
+  transition: all 0.2s ease-in-out;
   position: absolute;
   top: 2.5rem;
   left: 0.8rem;
   color: #61738e;
   background-color: #fff;
   font-size: 1rem;
-  transition: all 0.2s ease-in-out;
 }
 .signup-form__password input {
-  width: 100%;
   height: 4rem;
   font-size: large;
   border-radius: 0.3rem;
   border: 0.1rem solid #d6dee5;
   padding: 0.8rem;
   box-sizing: border-box;
-  outline: 0px;
+  width: 100%;
+  outline: 0;
 }
 .signup-form__password span {
   display: none;
@@ -258,11 +332,29 @@ body {
   top: 5.1rem;
   left: 0.8rem;
 }
+.signup-form__password[data-status=err] input {
+  border-color: #e22d4c;
+}
+.signup-form__password[data-status=err] label {
+  color: #e22d4c;
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
+.signup-form__password[data-status=err] [data-err] {
+  display: inline;
+}
+.signup-form__password[data-status=active] input {
+  border-color: #0080ff;
+}
+.signup-form__password[data-status=active] label {
+  top: 0.6rem;
+  font-size: 0.8rem;
+}
 .signup-form__profession {
-  position: relative;
-  margin: 1rem 0;
   display: flex;
   flex-direction: row;
+  position: relative;
+  margin: 1rem 0;
   justify-content: space-between;
   cursor: pointer;
 }
@@ -279,6 +371,10 @@ body {
   justify-content: space-around;
   width: 47.5%;
 }
+.signup-form__profession span[data-status=active] {
+  border-color: #0080ff;
+  background-color: #F2F8FF;
+}
 .signup-form__profession span[data-err=profession] {
   position: absolute;
   display: none;
@@ -286,6 +382,9 @@ body {
   font-size: 0.6rem;
   top: 3.3rem;
   color: #e22d4c;
+}
+.signup-form__profession [data-status=err] + [data-err] {
+  display: inline;
 }
 .signup-form__submit {
   padding: 1rem 0;
@@ -301,6 +400,7 @@ body {
   cursor: pointer;
 }
 .signup-form__submitted {
+  transition: opacity 1s linear;
   position: absolute;
   padding: 1rem 2rem 0.8rem 2rem;
   background-color: #00ff77;
@@ -308,7 +408,15 @@ body {
   left: 15%;
   border-radius: 0.5rem;
   opacity: 0;
-  transition: opacity 1s linear;
+}
+.signup-form [data-alert=submit][data-status=active] {
+  opacity: 1;
+}
+.signup-form [data-codes=country][data-status=active] {
+  display: flex;
+}
+.signup-form .phone__country-code[data-status=inactive] {
+  border-color: #d6dee5;
 }
 
 @media screen and (max-width: 800px) {
@@ -332,5 +440,8 @@ body {
   }
   .signup-form__phone {
     width: 70%;
+  }
+  .signup-form__phone-grp span[data-caret=phone] {
+    margin-left: 16%;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -7,6 +7,7 @@ $input-active-color: #0080ff;
 $font-color: #515151;
 $err-color: #e22d4c;
 $success-color: #00ff77;
+$profession-bg-color: #F2F8FF;
 
 @mixin flex-row {
   display: flex;
@@ -41,24 +42,24 @@ $success-color: #00ff77;
 }
 
 @mixin input-box {
-  padding: 1rem 0;
   @include flex-row();
+  padding: 1rem 0;
   position: relative;
 
   label {
+    @include transition(all, 0.2s, ease-in-out);
     position: absolute;
     top: 2.5rem;
     left: 0.8rem;
     color: $label-color;
     background-color: $white;
     font-size: 1rem;
-    @include transition(all, 0.2s, ease-in-out);
   }
 
   input {
-    width: 100%;
     @include custom-input();
-    outline: 0px;
+    width: 100%;
+    outline: 0;
   }
 
   span {
@@ -68,6 +69,35 @@ $success-color: #00ff77;
     font-size: 0.6rem;
     top: 5.1rem;
     left: 0.8rem;
+  }
+}
+
+@mixin form-field-status {
+  &[data-status=err] {
+    input {
+      border-color: $err-color;
+    }
+  
+    label {
+      color: $err-color;
+      top: 0.6rem;
+      font-size: 0.8rem;
+    }
+  
+    [data-err] {
+      display: inline;
+    }
+  }
+
+  &[data-status=active] {
+    input {
+      border-color: $input-active-color;
+    }
+  
+    label {
+      top: 0.6rem;
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -83,9 +113,9 @@ body {
   height: 100vh;
 
   &__avatar-container {
-    flex: 55%;
     @include flex-row();
     @include flex-centered();
+    flex: 55%;
   }
 
   &__avatar-container img {
@@ -95,9 +125,9 @@ body {
 }
 
 .form-container {
+  @include flex-col();
   flex: 45%;
   background-color: $white;
-  @include flex-col();
   padding: 1rem 4rem;
 
   &__header-logos {
@@ -131,10 +161,12 @@ body {
 
   &__username {
     @include input-box();
+    @include form-field-status();
   }
 
   &__email {
     @include input-box();
+    @include form-field-status();
   }
 
   &__phone-grp {
@@ -171,30 +203,35 @@ body {
 
   &__phone {
     @include input-box();
-    width: 80%;
+    @include form-field-status();
+    width: 75%;
   }
 
   &__country-code {
     @include input-box();
-    width: 15%;
+    @include form-field-status();
+    width: 20%;
   }
 
-  &__country-code span[data-caret="phone"] {
+  &__phone-grp span[data-caret=phone] {
+    position: absolute;
     display: inline;
     color: $font-color;
     font-size: 0.8rem;
-    left: 75%;
-    top: 2.5rem;
+    margin-left: 6%;
+    margin-top: 2.5rem;
+    cursor: pointer;
   }
 
   &__password {
     @include input-box();
+    @include form-field-status();
   }
 
   &__profession {
+    @include flex-row();
     position: relative;
     margin: 1rem 0;
-    @include flex-row();
     justify-content: space-between;
     cursor: pointer;
   }
@@ -207,13 +244,22 @@ body {
     width: 47.5%;
   }
 
-  &__profession span[data-err="profession"] {
+  &__profession span[data-status=active] {
+    border-color: $input-active-color;
+    background-color: $profession-bg-color;
+  }
+
+  &__profession span[data-err=profession] {
     position: absolute;
     display: none;
     border: none;
     font-size: 0.6rem;
     top: 3.3rem;
     color: $err-color;
+  }
+
+  &__profession [data-status=err] +  [data-err]{
+    display: inline;
   }
 
   &__submit {
@@ -232,6 +278,7 @@ body {
   }
 
   &__submitted {
+    @include transition(opacity, 1s, linear);
     position: absolute;
     padding: 1rem 2rem 0.8rem 2rem;
     background-color: $success-color;
@@ -239,7 +286,18 @@ body {
     left: 15%;
     border-radius: 0.5rem;
     opacity: 0;
-    @include transition(opacity, 1s, linear);
+  }
+
+  [data-alert=submit][data-status=active] {
+    opacity: 1;
+  }
+
+  [data-codes=country][data-status=active] {
+    display: flex;
+  }
+
+  .phone__country-code[data-status=inactive] {
+    border-color: $border-color;
   }
 }
 
@@ -269,6 +327,10 @@ body {
 
     &__phone {
       width: 70%;
+    }
+
+    &__phone-grp span[data-caret=phone] {
+      margin-left: 16%;
     }
   }
 }
